@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- single spa -->
+    <script src="https://unpkg.com/single-spa"></script>
+    <script src="https://unpkg.com/single-spa-angularjs"></script>
+    <!-- vendor -->
+    <script data-require="angular.js@1.3.20" data-semver="1.3.20" src="https://code.angularjs.org/1.3.20/angular.js"></script>
+    <script data-require="ui-router@0.2.12" data-semver="0.2.12" src="//cdn.rawgit.com/angular-ui/ui-router/0.2.12/release/angular-ui-router.js"></script>
+    <!-- app files -->
+    
+    <link rel="stylesheet" href="style.css" />
+    <script src="header/app.module.js"></script>
+    <script src="header/app.config.js"></script>
+    <script src="header/nav.directive.js"></script>
+
+    <script src="main/app.module.js"></script>
+    <script src="main/app.config.js"></script>
+    <script src="main/app.service.js"></script>
+    <script src="main/views/main.ctrl.js"></script>
+    <script src="main/views/other.ctrl.js"></script>
+
+    <script src="footer/app.module.js"></script>
+    <script src="footer/footer.directive.js"></script>
+
+    
+  </head>
+  
+  <body>
+    <div id="header"></div>
+    <div id="main"></div>
+    <div id="footer"></div>
+
+    <script src="single-spa.config.js"></script>
+  </body>
+
+</html>
