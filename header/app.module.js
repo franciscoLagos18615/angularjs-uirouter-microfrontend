@@ -1,3 +1,6 @@
 (function(){
-  angular.module("app.header", ['ui.router']);
+  const useUiRouter = false;
+
+  angular.module("app.header", ['ui.router'])
+    .constant('useUiRouter', useUiRouter);
 })();

@@ -1,37 +1,40 @@
 (function () {
-  angular.module("app.main")
+  angular.module("app2.main")
     .config(config);
 
   function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/two/main');
 
     $stateProvider.state('root', {
       abstract: true,
       views: {
         "main@": {}
       }
-    }).state('main', {
+    })
+    .state('app2', {
       parent: 'root',
+      abstract: true,
+      url: '/two'
+    })
+    .state('app2.main', {
       url: '/main',
       views: {
         "main@": {
           controller: 'MainController',
           controllerAs: 'ctrl',
-          templateUrl: 'main/views/main.tpl.html'
+          templateUrl: 'app2/views/main.tpl.html'
         }
-      },
-      data: { pageTitle: 'Main' }
-    }).state('other', {
-      parent: 'root',
+      }
+    })
+    .state('app2.other', {
       url: '/other',
       views: {
         "main@": {
           controller: 'OtherController',
           controllerAs: 'ctrl',
-          templateUrl: 'main/views/other.tpl.html'
+          templateUrl: 'app2/views/other.tpl.html'
         }
-      },
-      data: { pageTitle: 'Other' }
+      }
     });
   }
 })();

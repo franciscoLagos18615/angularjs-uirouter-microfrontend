@@ -1,5 +1,5 @@
 (function(){
-  angular.module("app.main")
+  angular.module("app1.main")
     .controller("OtherController", OtherController);
 
   function OtherController($scope, Service) {

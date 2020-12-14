@@ -1,5 +1,5 @@
 (function(){
-  angular.module("app.main")
+  angular.module("app1.main")
     .service("Service", Service);
 
   function Service() {

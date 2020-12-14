@@ -2,13 +2,29 @@ const headerApp = singleSpaAngularjs.default({
   angular: angular,
   domElementGetter: () => document.getElementById('header'),
   mainAngularModule: 'app.header',
-  uiRouter: 'header'
+  //uiRouter: 'header'
+  template: `
+  <h1>Header</h1>
+  <hr>
+  <app-nav></app-nav>
+  <hr>
+  `
 });
 
-const mainAngularJsApp = singleSpaAngularjs.default({
+const app1 = singleSpaAngularjs.default({
   angular: angular,
   domElementGetter: () => document.getElementById('main'),
-  mainAngularModule: 'app.main',
+  mainAngularModule: 'app1.main',
+  template: `
+    <!-- MAIN -->
+    <div ui-view="main" autoscroll="true"></div>
+  `
+});
+
+const app2 = singleSpaAngularjs.default({
+  angular: angular,
+  domElementGetter: () => document.getElementById('main'),
+  mainAngularModule: 'app2.main',
   template: `
     <!-- MAIN -->
     <div ui-view="main" autoscroll="true"></div>
@@ -29,10 +45,31 @@ singleSpa.registerApplication({
   activeWhen: () => true
 });
 
+function disableRouter() {
+  return new Promise((resolve, reject) => {
+    try {
+      angular.element(document.getElementById('main')).children('.ng-scope').injector().get('$uiRouter').dispose();
+      resolve();
+    } catch {
+      reject(new Error('oops'));
+    }
+  });
+}
+
 singleSpa.registerApplication({
-  name: 'mainAngularJsApp',
-  app: mainAngularJsApp,
-  activeWhen: () => true
+  name: 'app1',
+  app: {
+    bootstrap: app1.bootstrap,
+    mount: app1.mount,
+    unmount: [disableRouter, app1.unmount]
+  },
+  activeWhen: (location) => location.hash.startsWith('#/one')
+});
+
+singleSpa.registerApplication({
+  name: 'app2',
+  app: app2,
+  activeWhen: (location) => location.hash.startsWith('#/two')
 });
 
 singleSpa.registerApplication({

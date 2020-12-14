@@ -1,6 +1,9 @@
 <ul>
   <li ng-repeat="state in nav.states">
-    <a ng-if="!nav.is(state)" ui-sref="{{state.sref}}">{{state.label}}</a>
+    <a ng-if="nav.useUiRouter && !nav.is(state)"
+      ui-sref="{{state.sref}}">{{state.label}}</a>
+    <a ng-if="!nav.useUiRouter && !nav.is(state)"
+      href="{{state.sref}}">{{state.label}}</a>
     <span ng-if="nav.is(state)">{{state.label}} (current)</span>
   </li>
 </ul>
