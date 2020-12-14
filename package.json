@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-uirouter-microfrontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klaimmore/angularjs-uirouter-microfrontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klaimmore/angularjs-uirouter-microfrontend/issues"
+  },
+  "homepage": "https://github.com/klaimmore/angularjs-uirouter-microfrontend#readme",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}
