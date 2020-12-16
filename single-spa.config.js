@@ -45,23 +45,12 @@ singleSpa.registerApplication({
   activeWhen: () => true
 });
 
-function disableRouter() {
-  return new Promise((resolve, reject) => {
-    try {
-      angular.element(document.getElementById('main')).children('.ng-scope').injector().get('$uiRouter').dispose();
-      resolve();
-    } catch {
-      reject(new Error('oops'));
-    }
-  });
-}
-
 singleSpa.registerApplication({
   name: 'app1',
   app: {
     bootstrap: app1.bootstrap,
     mount: app1.mount,
-    unmount: [disableRouter, app1.unmount]
+    unmount: app1.unmount
   },
   activeWhen: (location) => location.hash.startsWith('#/one')
 });
