@@ -11,26 +11,6 @@ const headerApp = singleSpaAngularjs.default({
   `
 });
 
-const app1 = singleSpaAngularjs.default({
-  angular: angular,
-  domElementGetter: () => document.getElementById('main'),
-  mainAngularModule: 'app1.main',
-  template: `
-    <!-- MAIN -->
-    <div ui-view="main" autoscroll="true"></div>
-  `
-});
-
-const app2 = singleSpaAngularjs.default({
-  angular: angular,
-  domElementGetter: () => document.getElementById('main'),
-  mainAngularModule: 'app2.main',
-  template: `
-    <!-- MAIN -->
-    <div ui-view="main" autoscroll="true"></div>
-  `
-});
-
 const footerApp = singleSpaAngularjs.default({
   angular: angular,
   domElementGetter: () => document.getElementById('footer'),
@@ -47,17 +27,13 @@ singleSpa.registerApplication({
 
 singleSpa.registerApplication({
   name: 'app1',
-  app: {
-    bootstrap: app1.bootstrap,
-    mount: app1.mount,
-    unmount: app1.unmount
-  },
+  app: () => System.import("http://localhost:9000/bundle.js"),
   activeWhen: (location) => location.hash.startsWith('#/one')
 });
 
 singleSpa.registerApplication({
   name: 'app2',
-  app: app2,
+  app: () => System.import("http://localhost:9001/bundle.js"),
   activeWhen: (location) => location.hash.startsWith('#/two')
 });
 
