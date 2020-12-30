@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: "system"
   },
+  target: ["web", "es5"],
   devServer: {
     contentBase: './dist',
     compress: true,
