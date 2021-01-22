@@ -9,11 +9,23 @@ module.exports = {
   },
   target: ["web", "es5"],
   devServer: {
-    contentBase: './dist',
+    contentBase: './src',
     compress: true,
     port: 9000,
     headers: {
       "Access-Control-Allow-Origin": "*"
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.html$/,
+        use: ['raw-loader']
+      }
+    ]
   }
 };

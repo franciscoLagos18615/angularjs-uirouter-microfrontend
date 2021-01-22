@@ -15,5 +15,21 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*"
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { insert: '#main' }
+          }, 'css-loader']
+      },
+      {
+        test: /\.html$/,
+        use: ['raw-loader']
+      }
+    ]
   }
 };
